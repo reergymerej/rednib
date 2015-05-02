@@ -1,0 +1,35 @@
+{
+  "name": "rednib",
+  "version": "0.0.1",
+  "description": "an event binder",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "keywords": [
+    "event",
+    "binding",
+    "event binding"
+  ],
+  "author": "Jeremy Greer <jeremy.greer.atl@gmail.com> (http://jeremygreer.herokuapp.com/)",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.2.4",
+    "willy": "^1.0.1"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reergymerej/rednib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reergymerej/rednib/issues"
+  },
+  "homepage": "https://github.com/reergymerej/rednib#readme"
+}
