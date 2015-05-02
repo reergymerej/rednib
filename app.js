@@ -2,10 +2,44 @@
 
 var VERSION = '0.0.1';
 
+var touchHandlers = function (eventName) {
+  this._handlers = this._handlers || {};
+  this._handlers[eventName] = this._handlers[eventName] || [];
+};
+
+var getHandlers = function (eventName) {
+  return this._handlers && this._handlers[eventName];
+};
+
 var methods = {
-  bind: function () {},
-  unbind: function () {},
-  trigger: function () {},
+  bind: function (eventName, handler) {
+    if (!eventName) {
+      throw new Error('Whoops, that\'s not the way to bind.');
+    }
+
+    touchHandlers.apply(this, [eventName]);
+    getHandlers.apply(this, [eventName]).push(handler);
+  },
+
+  unbind: function (eventName, handler) {
+    var i, handlers;
+
+    touchHandlers.apply(this, [eventName]);
+    handlers = getHandlers.apply(this, [eventName]);
+    for (i = 0; i < handlers.length; i++) {
+      if (handler ? handlers[i] === handler : true) {
+        handlers.splice(i, 1);
+        i--;
+      }
+    }
+  },
+
+  trigger: function (eventName) {
+    touchHandlers.apply(this, [eventName]);
+    getHandlers.apply(this, [eventName]).forEach(function (handler) {
+      handler();
+    });
+  }
 };
 
 var builtInMethodNames = Object.keys(methods).map(function (key) {
@@ -20,8 +54,10 @@ module.exports = (function (obj) {
         obj[key] = methods[key];
       });
     } catch (e) {
-      throw new Error(obj.toString() + ' is not a supported type.');
+      throw new Error(obj + ' is not a supported type.');
     }
+
+    return obj;
   };
 
   app.version = VERSION;
@@ -37,5 +73,6 @@ module.exports = (function (obj) {
 
     methods[alias] = methods[methodName];
   };
+
   return app;
 }());
