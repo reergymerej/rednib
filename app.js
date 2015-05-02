@@ -2,4 +2,16 @@
 
 var VERSION = '0.0.1';
 
-exports.version = VERSION;
+var bind = function () {};
+var unbind = function () {};
+
+module.exports = (function (obj) {
+  
+  var app = function (obj) {
+    obj.bind = bind;
+    obj.unbind = unbind;
+  };
+
+  app.version = VERSION;
+  return app;
+}());
