@@ -1,4 +1,4 @@
-# rednib v0.0.2 [![Build Status](https://travis-ci.org/reergymerej/rednib.svg?branch=master)](https://travis-ci.org/reergymerej/rednib)
+# rednib v0.0.2 [![Build Status](https://travis-ci.org/reergymerej/rednib.svg?branch=v0.0.2)](https://travis-ci.org/reergymerej/rednib)
 
 rednib takes any object and makes it observable.
 
