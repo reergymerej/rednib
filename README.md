@@ -1,4 +1,4 @@
-# rednib v0.0.1 [![Build Status](https://travis-ci.org/reergymerej/rednib.svg?branch=master)](https://travis-ci.org/reergymerej/rednib)
+# rednib v0.0.2 [![Build Status](https://travis-ci.org/reergymerej/rednib.svg?branch=master)](https://travis-ci.org/reergymerej/rednib)
 
 rednib takes any object and makes it observable.
 
@@ -41,4 +41,3 @@ Please [create an issue](https://github.com/reergymerej/rednib/issues) for featu
 * event data
 * handler scope
 * binding with an object to set many at a time
-* remove all handlers

@@ -1,6 +1,6 @@
 {
   "name": "rednib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "an event binder",
   "main": "app.js",
   "directories": {
