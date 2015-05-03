@@ -11,14 +11,39 @@ var getHandlers = function (eventName) {
   return this._handlers && this._handlers[eventName];
 };
 
+var isObject = function (obj) {
+  return !!(obj.toString && obj.toString() === '[object Object]');
+};
+
+var eachObject = function (obj, fn, scope) {
+  Object.keys(obj).forEach(function (key) {
+    fn.apply(scope, [key, obj[key], obj]);
+  });
+};
+
 var methods = {
+  /*
+  * @param {String/Object} eventName
+  * @param {Function} handler
+  */
   bind: function (eventName, handler) {
+    var map;
     if (!eventName) {
       throw new Error('Whoops, that\'s not the way to bind.');
     }
 
-    touchHandlers.apply(this, [eventName]);
-    getHandlers.apply(this, [eventName]).push(handler);
+    // account for alternate signature
+    if (!isObject(eventName)) {
+      map = {};
+      map[eventName] = handler;
+    } else {
+      map = eventName;
+    }
+
+    eachObject(map, function (eventName, handler) {
+      touchHandlers.apply(this, [eventName]);
+      getHandlers.apply(this, [eventName]).push(handler);
+    }, this);
   },
 
   unbind: function (eventName, handler) {

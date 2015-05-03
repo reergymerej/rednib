@@ -33,11 +33,24 @@ pojo.forget('foo', onFoo);
 ```
 
 ================================================
+## More Options
+
+You an assign multiple handlers at once with an object.
+
+```js
+pojo.bind({
+  foo: function () {},
+  bar: function () {},
+  baz: function () {}
+});
+```
+
+================================================
 
 Please [create an issue](https://github.com/reergymerej/rednib/issues) for feature requests or to report bugs.
 
 ### Coming Soon
 
+* binding with an object to set many at a time
 * event data
 * handler scope
-* binding with an object to set many at a time

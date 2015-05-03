@@ -203,3 +203,25 @@ describe('removing listeners', function () {
     will(count).be(0);
   });
 });
+
+describe('binding multiple events at once', function () {
+  it('should add listeners for each key', function () {
+    var obj = app({});
+    var count = 0;
+    var handler = function () { count++; };
+
+    obj.bind({
+      foo: handler,
+      bar: handler,
+      baz: handler
+    });
+
+    obj.trigger('foo');
+    obj.trigger('bar');
+    obj.trigger('baz');
+
+    will(count).be(3);
+  });
+});
+
+// TODO: built in event should return the object for chaining
