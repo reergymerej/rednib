@@ -33,7 +33,7 @@ pojo.forget('foo', onFoo);
 ```
 
 ================================================
-## More Options
+## More Info
 
 You an assign multiple handlers at once with an object.
 
@@ -45,12 +45,30 @@ pojo.bind({
 });
 ```
 
+`rednib`, `bind`, `trigger`, and `unbind` all return the observable object, so they can be chained.
+
+```js
+rednib({}).
+  bind('foo', function () { console.log('yo'); }).
+  trigger('foo').
+  unbind('foo');
+```
+
+You can include data when triggering an event.
+
+```js
+obj.on('foo', function (data) {
+  // do something with data
+});
+
+obj.trigger('foo', { bar: true, baz: false });
+```
+
 ================================================
 
 Please [create an issue](https://github.com/reergymerej/rednib/issues) for feature requests or to report bugs.
 
 ### Coming Soon
 
-* binding with an object to set many at a time
-* event data
+* once
 * handler scope

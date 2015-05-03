@@ -44,6 +44,8 @@ var methods = {
       touchHandlers.apply(this, [eventName]);
       getHandlers.apply(this, [eventName]).push(handler);
     }, this);
+
+    return this;
   },
 
   unbind: function (eventName, handler) {
@@ -57,13 +59,17 @@ var methods = {
         i--;
       }
     }
+
+    return this;
   },
 
-  trigger: function (eventName) {
+  trigger: function (eventName, data) {
     touchHandlers.apply(this, [eventName]);
     getHandlers.apply(this, [eventName]).forEach(function (handler) {
-      handler();
+      handler(data);
     });
+
+    return this;
   }
 };
 
