@@ -203,3 +203,52 @@ describe('removing listeners', function () {
     will(count).be(0);
   });
 });
+
+describe('binding multiple events at once', function () {
+  it('should add listeners for each key', function () {
+    var obj = app({});
+    var count = 0;
+    var handler = function () { count++; };
+
+    obj.bind({
+      foo: handler,
+      bar: handler,
+      baz: handler
+    });
+
+    obj.trigger('foo');
+    obj.trigger('bar');
+    obj.trigger('baz');
+
+    will(count).be(3);
+  });
+});
+
+describe('chaining', function () {
+  var obj;
+
+  before(function () {
+    obj = app({});
+  });
+
+  it('should return observable for bind', function () {
+    will(obj.bind('asdf', function () {})).be(obj);
+  });
+
+  it('should return observable for unbind', function () {
+    will(obj.unbind('asdf')).be(obj);
+  });
+
+  it('should return observable for trigger', function () {
+    will(obj.trigger('asdf')).be(obj);
+  });
+});
+
+describe('event data', function () {
+  it('should be passed to the handler', function (done) {
+    app({}).bind('foo', function (data) {
+      will(data.hello).be(true);
+      done();
+    }).trigger('foo', { hello: true});
+  });
+});
