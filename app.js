@@ -1,6 +1,6 @@
 'use strict';
 
-var VERSION = '0.0.1';
+var VERSION = '0.0.2';
 
 var touchHandlers = function (eventName) {
   this._handlers = this._handlers || {};
@@ -78,7 +78,7 @@ var builtInMethodNames = Object.keys(methods).map(function (key) {
 });
 
 module.exports = (function (obj) {
- 
+
   var app = function (obj) {
     try {
       Object.keys(methods).forEach(function (key) {
