@@ -242,6 +242,10 @@ describe('chaining', function () {
   it('should return observable for trigger', function () {
     will(obj.trigger('asdf')).be(obj);
   });
+
+  it('should return observable for alias', function () {
+    will(app.alias('bind', 'anotherBindAlias')).be(app);
+  });
 });
 
 describe('event data', function () {

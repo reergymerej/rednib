@@ -54,6 +54,14 @@ rednib({}).
   unbind('foo');
 ```
 
+`alias` returns the rednib object, so you can chain alias calls.
+```js
+rednib.alias('bind', 'when').alias('trigger', 'broadcast');
+
+// To demonstrate, you can do the following, though I don't know why you would.
+rednib.alias('bind', 'whenISay')({}).whenISay('hey', function () { console.log('ho!')}).trigger('hey').unbind('hey');
+```
+
 You can include data when triggering an event.
 
 ```js

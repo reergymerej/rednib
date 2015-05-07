@@ -103,6 +103,8 @@ module.exports = (function (obj) {
     }
 
     methods[alias] = methods[methodName];
+
+    return app;
   };
 
   return app;
